@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div style="display: block; text-align: center; padding-top: 100px;">
+
+</div>
+<div>
+    <a href="{{url_for('logout')}}" style="padding-left: 1000px;">
+        Logout
+    </a>
+</div>
+<div>
+    <div style="display: block; margin-top: 200px; text-align: center; font-family: Arial;">
+        result: {{answer}}
+    </div>    
+{% endblock content %}        

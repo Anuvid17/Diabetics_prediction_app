@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare with Machine Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(to right, #65cffd, #6ec1ea);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slide-in 1s ease-out;
+        }
+
+        @keyframes slide-in {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            animation: gradient-animation 10s infinite linear;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="heading">
+            Healthcare with Machine Learning
+        </h1>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+             {% if messages %}
+                  {% for category, message in messages %}
+                        <div class="alert {{category}}">
+                            {{ messages }}
+                        </div>
+                   {% endfor %} 
+              {% endif %}
+        {% endwith %}
+    </div>          
+   
+    <div class="footer">
+        &copy; 2024 Healthcare with Machine Learning. All rights reserved.
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</body>
