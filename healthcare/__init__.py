@@ -15,8 +15,6 @@ bcrypt = Bcrypt(app)
 app.config["SECRET_KEY"] = "thisissecuritykey"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
 
-# "mysql+pymysql://root:Bca_2022@localhost:3306/user_details"
-
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
