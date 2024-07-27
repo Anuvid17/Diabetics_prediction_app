@@ -22,9 +22,9 @@
     form {
         width: 300px;
         padding: 20px;
-        border: 1px solid #0c3108;
+        border: 1px solid #ccc;
         border-radius: 10px;
-        background-color: #f9f9f9;
+        background-color: transparent;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -59,17 +59,20 @@
         display: block;
         margin-bottom: 5px;
         font-size: large;
+        font-weight: bold;
         color: #555;
     }
 
     input {
         width: 100%;
         padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        line-height: 1.5;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         font-size: 16px;
+        background-color: transparent;
         transition: border-color 0.3s ease;
     }
 
