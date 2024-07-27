@@ -7,14 +7,31 @@
         justify-content: center;
         align-items: center;
         margin-top: 70px;
+        animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     form {
         width: 350px;
         padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
+        border: 1px solid rgba(179, 217, 255, 0.5);
+        border-radius: 10px;
+        background-color: transparent;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
     fieldset {
@@ -24,48 +41,79 @@
     }
 
     legend {
-        font-size: 20px;
+        font-size: 24px;
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
     }
 
     ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     label {
         display: block;
         margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
     }
 
     input[type="text"],
     input[type="email"],
     input[type="password"] {
         width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        line-height: 1.5;
         box-sizing: border-box;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         font-size: 16px;
+        background-color: transparent;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+        border-color: 2px solid #66afe9;
+        outline: none;
+        box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+
+    .password-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #570e0e;
     }
 
     input[type="submit"] {
         background-color: #4CAF50;
         color: white;
-        padding: 10px 20px;
+        padding: 12px 20px;
         border: none;
-        border-radius: 3px;
+        border-radius: 5px;
         cursor: pointer;
         font-size: 18px;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     input[type="submit"]:hover {
         background-color: #45a049;
+        transform: translateY(-2px);
     }
 
     .register {
@@ -73,6 +121,17 @@
         justify-content: center;
         align-items: center;
         padding-top: 20px;
+        font-size: 16px;
+    }
+
+    .register a {
+        color: blue;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .register a:hover {
+        color: #0056b3;
     }
 </style>
 
@@ -106,25 +165,31 @@
                 </li>
                 <li>
                     {{ form.password.label }}
-                    {% if form.password.errors %}
-                        {{ form.password(class="form-control is-invalid") }}
-                        {% for error in form.password.errors %}
-                            <div class="invalid-feedback">{{ error }}</div>
-                        {% endfor %}
-                    {% else %}
-                        {{ form.password(class="form-control") }}
-                    {% endif %}
+                    <div class="password-container">
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control is-invalid", id="password") }}
+                            {% for error in form.password.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.password(class="form-control", id="password") }}
+                        {% endif %}
+                        <span class="password-toggle" onclick="togglePasswordVisibility('password')">Show</span>
+                    </div>
                 </li>
                 <li>
                     {{ form.confirm_password.label }}
-                    {% if form.confirm_password.errors %}
-                        {{ form.confirm_password(class="form-control is-invalid") }}
-                        {% for error in form.confirm_password.errors %}
-                            <div class="invalid-feedback">{{ error }}</div>
-                        {% endfor %}
-                    {% else %}
-                        {{ form.confirm_password(class="form-control") }}
-                    {% endif %}
+                    <div class="password-container">
+                        {% if form.confirm_password.errors %}
+                            {{ form.confirm_password(class="form-control is-invalid", id="confirm_password") }}
+                            {% for error in form.confirm_password.errors %}
+                                <div class="invalid-feedback">{{ error }}</div>
+                            {% endfor %}
+                        {% else %}
+                            {{ form.confirm_password(class="form-control", id="confirm_password") }}
+                        {% endif %}
+                        <span class="password-toggle" onclick="togglePasswordVisibility('confirm_password')">Show</span>
+                    </div>
                 </li>
             </ul>
         </fieldset>
@@ -135,6 +200,20 @@
 </div>
 
 <div class="register">
-    Already have an account? <a href="{{ url_for('login') }}" style="color: blue;">Login</a>
+    Already have an account? <a href="{{ url_for('login') }}">Login</a>
 </div>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        var field = document.getElementById(fieldId);
+        var toggle = field.nextElementSibling;
+        if (field.type === 'password') {
+            field.type = 'text';
+            toggle.textContent = 'Hide';
+        } else {
+            field.type = 'password';
+            toggle.textContent = 'Show';
+        }
+    }
+</script>
 {% endblock content %}

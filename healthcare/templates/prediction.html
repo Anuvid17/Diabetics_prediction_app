@@ -1,86 +1,156 @@
-{% extends "homepage.html" %}
+{% extends "layout.html" %}
+
 {% block content %}
 <style>
-    .body{
+    .body {
         display: flex;
         justify-content: center;
         align-items: center;
         align-self: center;
+        animation: fadeIn 2s ease-in;
     }
 
-    form{
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    form {
         width: 300px;
-        padding: 10px;
+        padding: 20px;
         border: 1px solid #0c3108;
-        border-radius: 5px;
+        border-radius: 10px;
         background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    fieldset{
+    form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    fieldset {
         border: none;
         margin: 0;
         padding: 0;
     }
 
-    legend{
+    legend {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 10px;
+        text-align: center;
+        color: #333;
     }
 
-    ul{
+    ul {
         list-style: none;
         margin: 0;
         padding: 0;
         margin-bottom: 10px;
     }
 
-    label{
+    label {
         display: block;
         margin-bottom: 5px;
         font-size: large;
+        color: #555;
     }
 
-    input{
+    input {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         border: 1px solid #ccc;
-        border-radius: 3px;
+        border-radius: 5px;
         box-sizing: border-box;
         margin-bottom: 10px;
-        font-size: 15px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
     }
 
-    .boxes{
+    input:focus {
+        border-color: #66afe9;
+        outline: none;
+        box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    }
+
+    .boxes {
         background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .boxes:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+    }
+
+    .logout-btn {
+        background-color: #f44336;
         color: white;
         padding: 10px 20px;
         border: none;
-        border-radius: 3px;
+        border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 20px;
     }
 
-    .boxes:hover{
-        background-color: #45a049;
+    .logout-btn:hover {
+        background-color: #e53935;
+        transform: translateY(-2px);
     }
 
-    .register{
+    .register {
         display: flex;
         justify-content: center;
         align-items: center;
         padding-top: 30px;
         align-self: center;
     }
+
+    .logout-link {
+        padding-left: 1000px;
+        color: rgb(0, 81, 255);
+        font-size: 16px;
+    }
+
+    .page-title {
+        text-align: center;
+    }
+
+    .page-title h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .page-title h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
 </style>
-<a href="{{url_for('logout')}}" style="padding-left: 1000px; color: rgb(0, 81, 255);">
-    Logout
-</a>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ url_for('logout') }}">
+        <button class="logout-btn">Logout</button>
+    </a>
+</div>
 
 <div>
-    <div style="display: block; text-align: center;">
+    <div class="page-title">
         <h1>
-            Welcome {{form}}, <br>
+            Welcome, {{ username }} <br>
         </h1>
         <h3>
             Enter the details for Diabetes Prediction
@@ -90,7 +160,7 @@
 
 <div>
     <div class="body">
-        <form method="POST" action="{{url_for('result')}}">
+        <form method="POST" action="{{ url_for('result') }}">
             <fieldset>
                 <legend></legend>
                 <ul>
@@ -103,7 +173,7 @@
                         <input type="number" name="glucose" placeholder="Glucose" required>
                     </li>
                     <li>
-                        <label>BloodPressure: </label>
+                        <label>Blood Pressure: </label>
                         <input type="number" name="bp" placeholder="bp" required>
                     </li>
                     <li>
@@ -118,7 +188,6 @@
                         <label>BMI: </label>
                         <input type="number" name="bmi" placeholder="bmi" required>
                     </li>
-                    <li>
                     <li>
                         <label>Pedigree Function: </label>
                         <input type="number" step="0.1" name="pedigreefunction" placeholder="pedigree function" required>
@@ -135,4 +204,4 @@
         </form>
     </div>
 </div>
-{% endblock content %}
+{% endblock %}

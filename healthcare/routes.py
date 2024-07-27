@@ -29,7 +29,7 @@ def registration():
 def login():
     form = Loginform()
     if form.validate_on_submit():
-        db_user = User.query.filter_by(email=form.email.data).first()
+        db_user = User.query.filter_by(username=form.username.data).first()
         if db_user and bcrypt.check_password_hash(db_user.password, form.password.data):
             flash("Logged in successfully", "success")
             session['user'] = db_user.id
@@ -45,16 +45,25 @@ def contact():
 @app.route('/prediction', methods=["GET", "POST"])
 def prediction():
     if "user" in session:
-        response = make_response(render_template('prediction.html'))
+        user_id = session['user']
+        db_user = User.query.get(user_id)
+        username = db_user.username if db_user else "User"
+        response = make_response(render_template('prediction.html', username=username))
         response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
         return response
     else:
         return redirect(url_for('login'))
 
-@app.route('/logout')
+@app.route('/logout', methods=["GET"])
 def logout():
-    session.pop('user', None)
-    return redirect(url_for('login'))
+    if 'user' in session:
+        user_id = session['user']
+        user = User.query.get(user_id)
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+        session.pop('user', None)
+    return redirect(url_for('registration'))
 
 @app.route('/result', methods=["GET", "POST"])
 def result():

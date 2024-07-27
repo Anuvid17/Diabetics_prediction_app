@@ -9,12 +9,15 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(to right, #a8c0ff, #3f87f5);
             color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
-            background: linear-gradient(to right, #65cffd, #6ec1ea);
+            background: #c6e2ff;
             height: 120px;
             display: flex;
             align-items: center;
@@ -94,12 +97,10 @@
                    {% endfor %} 
               {% endif %}
         {% endwith %}
-    </div>          
-   
-    <div class="footer">
-        &copy; 2024 Healthcare with Machine Learning. All rights reserved.
-    </div>
-    {% block content %}
-
-    {% endblock %}
+    </div> 
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>         
 </body>
+</html>
