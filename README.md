@@ -1,7 +1,7 @@
 **TITLE:-** **HEALTHCARE WITH MACHINE LEARNING** <hr>
 
 **INTRODUCTION** <br>
-This is the platform where the person can fill the details and get to know whether he/she is a diaboetic person or not. <br>
-This site is created to learn the flask framework, database connectivity and machine learning.
-<br>
+This site is created under the flask framework using jinja templates and the sqlite database is used for the database. <br>
+Also machine learning is used to determine whether the person is diaboetic or not.
+<hr>
 **INSTALLATION** <br>
