@@ -1,4 +1,4 @@
-**TITLE:-** **HEALTHCARE WITH MACHINE LEARNING**
+**TITLE:-** **HEALTHCARE WITH MACHINE LEARNING** <hr>
 
 **INTRODUCTION** <br>
 This is the platform where the person can fill the details and get to know whether he/she is a diaboetic person or not. <br>
