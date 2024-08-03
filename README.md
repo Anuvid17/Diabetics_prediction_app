@@ -1,4 +1,4 @@
-<hr> <h2><b>Project Description:</b> DIABETES PREDICTION WEB APPLICATION </h2> <hr> 
+<hr> <h2><b>PROJECT DESCRIPTION:</b> DIABETES PREDICTION WEB APPLICATION </h2> <hr> 
 <h4><b></b>OVERVIEW</h4></b>
 The Diabetes Prediction Web Application figures out how likely patients are to get diabetes using machine learning. Developers built it with the Flask framework for the web interface SQLite to manage the database, and a trained machine learning model to make accurate predictions. <hr>
 <h4><b>OBJECTIVES</b></h4> <hr>
