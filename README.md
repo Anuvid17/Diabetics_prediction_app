@@ -6,7 +6,7 @@ i) To offer an easy-to-use interface for users to enter health information. <br>
 ii) To keep user data safe using SQLite. <br>
 iii) To use a trained machine learning model to predict diabetes risk based on what users enter. <br>
 iv) To give users predictions and insights right away. <br> <hr>
-<h4><b>Features</b></h4> <br> <hr>
+<h4><b>Features</b></h4> <hr>
 <b>i)Easy-to-Use Interface:</b> <br>
 a) Simple web interface created with Flask. <br>
 b) Forms to enter important health information (like age, BMI, blood pressure, glucose levels). <br>
