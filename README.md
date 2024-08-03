@@ -1,4 +1,4 @@
-<b>Project Description:</b> Diabetes Prediction Web Application <hr> 
+<hr> <b>Project Description:</b> Diabetes Prediction Web Application <hr> 
 <h4><b></b>Overview</h4></b>
 The Diabetes Prediction Web Application figures out how likely patients are to get diabetes using machine learning. Developers built it with the Flask framework for the web interface SQLite to manage the database, and a trained machine learning model to make accurate predictions. <hr>
 <h4><b>Objectives</b></h4> <hr>
@@ -32,7 +32,7 @@ b) Showing prediction outcomes and maybe suggesting they talk to a doctor. <br> 
 <b>i) Clone the repository</b> <br>
 git clone https://github.com/Anuvid17/Diabetics_prediction_app.git <br>
 <b>ii) Navigate to your project</b> <br>
-cd your-repository <br>
+cd your-directory <br>
 <b>iii) Install the flask </b> <br>
 pip install flask <br>
 
