@@ -30,9 +30,9 @@ b) Showing prediction outcomes and maybe suggesting they talk to a doctor. <br> 
 <b>iii) Machine Learning:</b> The model learns from a diabetes dataset (like the PIMA Indian Diabetes Dataset). Joblib or pickle packs up the model so it's ready to use. <br> <hr>
 <h4><b>INSTALLATION</b></h4> <hr>
 <b>i) Clone the repository</b> <br>
-git clone https://github.com/Anuvid17/Diabetics_prediction_app.git <br>
+       - git clone https://github.com/Anuvid17/Diabetics_prediction_app.git <br>
 <b>ii) Navigate to your project</b> <br>
-cd your-directory <br>
+           - cd your-directory <br>
 <b>iii) Install the flask </b> <br>
-pip install flask <br>
+             - pip install flask <br>
 
