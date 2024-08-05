@@ -81,8 +81,8 @@ def result():
     reshaped = userarray.reshape(1,-1)
     prediction = model.predict(reshaped)
     if prediction == 0:
-        result = "Not a diaboetic person"
+        result = "Not a diabetic person"
     else:
-        result = "Diaboetic person"
+        result = "Diabetic person"
 
     return render_template('result.html', answer = result)    
