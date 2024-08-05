@@ -31,7 +31,7 @@ def login():
     if form.validate_on_submit():
         db_user = User.query.filter_by(username=form.username.data).first()
         if db_user and bcrypt.check_password_hash(db_user.password, form.password.data):
-            flash("Logged in successfully", "success")
+            # flash("Logged in successfully", "success")
             session['user'] = db_user.id
             return redirect(url_for("prediction"))
         else:
